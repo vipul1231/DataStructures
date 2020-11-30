@@ -1,3 +1,5 @@
+package ds_general;
+
 import java.util.*;
 import java.util.function.IntBinaryOperator;
 
