@@ -100,6 +100,7 @@ public class ReverseLinklist {
                 next = start;
             } else {
                 next.setNext(value);
+                next = next.getNext();
             }
         }
         nodeStartEnd[0] = start;
@@ -111,26 +112,51 @@ public class ReverseLinklist {
         // Write your code here
         Node start = head;
         Node startSwap = null;
+        Boolean isFirstNodeEven = false;
+
         List<Integer> arrayList = new ArrayList<>();
         while (start != null) {
-            int data = start.getNext().getData();
+            Integer data = null;
+            if(start.getNext() == null) {
+                data = 1;
+            }
+            else {
+                data = start.getNext().getData();
+            }
             if(data%2 == 0) {
                 if (startSwap == null) {
-                    startSwap = start;
+                    if(start.getData() %2 == 0 && !isFirstNodeEven) {
+                        isFirstNodeEven = true;
+                        arrayList.add(start.getData());
+                        startSwap = start;
+                    }
+                    else {
+                        startSwap = start;
+                    }
                 }
-
                 arrayList.add(data);
             }
             else if( data%2 == 1 && startSwap != null && arrayList.size() > 0) {
                 Node nodeJoinPoint = start.getNext();
                 Collections.reverse(arrayList);
                 Node[] node = createLinkListFromArrayList(arrayList);
-                startSwap.setNext(node[0]);
-                node[1].setNext(nodeJoinPoint);
+
+                if(isFirstNodeEven) {
+                    head = node[0];
+                    node[1].setNext(nodeJoinPoint);
+                    isFirstNodeEven = false;
+                    start = node[1];
+                }
+                else {
+                    startSwap.setNext(node[0]);
+                    node[1].setNext(nodeJoinPoint);
+                }
+                startSwap = null;
+                arrayList.clear();
             }
             start = start.getNext();
         }
-        return null;
+        return head;
     }
 
     public static void main(String[] args) {
@@ -170,7 +196,8 @@ public class ReverseLinklist {
 
         traverseLinkList(start);
 
-        reverse(start);
+        start = reverse(start);
+        System.out.println();
         traverseLinkList(start);
     }
 }
