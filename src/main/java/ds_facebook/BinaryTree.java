@@ -28,9 +28,9 @@ class Tree {
 
 public class BinaryTree {
     static Tree start = null;
-    public static void addNodesToTree(Tree tree) {
+    public static void addNodesToTree(Tree tree1) {
 
-        Tree traversal = tree;
+        Tree traversal = tree1;
         Tree startCopy = start;
         while (startCopy.getNode() != null) {
             startCopy = startCopy.getNode();
@@ -44,10 +44,10 @@ public class BinaryTree {
 
         int nodes = scanner.nextInt();
         for(int i=0;i<nodes;i++) {
-            Tree tree = new Tree(scanner.nextInt(), null);
-            addNodesToTree(tree);
+            Tree tree1 = new Tree(scanner.nextInt(), null);
+            addNodesToTree(tree1);
             if(start == null) {
-                start = tree;
+                start = tree1;
             }
 
         }
