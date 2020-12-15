@@ -1,56 +1,42 @@
 package ds_facebook;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
- *
+ *  Average at each level.
  */
-class Tree {
-
-    private final int value;
-
-    private final Tree node;
-
-    public int getValue() {
-        return value;
-    }
-
-    public Tree getNode() {
-        return node;
-    }
-
-    Tree(int value, Tree node) {
-        this.value = value;
-        this.node = node;
-    }
-}
-
-
 public class BinaryTree {
-    static Tree start = null;
-    public static void addNodesToTree(Tree tree1) {
-
-        Tree traversal = tree1;
-        Tree startCopy = start;
-        while (startCopy.getNode() != null) {
-            startCopy = startCopy.getNode();
-        }
-
-
-    }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        int nodes = scanner.nextInt();
-        for(int i=0;i<nodes;i++) {
-            Tree tree1 = new Tree(scanner.nextInt(), null);
-            addNodesToTree(tree1);
-            if(start == null) {
-                start = tree1;
+        Tree node = new Tree(20);
+
+        node.leftNode = new Tree(4);
+        node.rightNode = new Tree(19);
+        node.leftNode.leftNode = new Tree(17);
+        node.leftNode.rightNode = new Tree(18);
+        node.rightNode.leftNode =new Tree(45);
+        node.rightNode.rightNode = new Tree(5);
+
+        LinkedList<Tree> linkedList = new LinkedList<>();
+        linkedList.add(node);
+        List<Integer> result = new ArrayList<>();
+        while (!linkedList.isEmpty()) {
+            int count = linkedList.size();
+            int sum = 0;
+            for (int i=0;i<count;i++) {
+                Tree tree = linkedList.poll();
+                assert tree != null;
+                if(tree.leftNode != null)
+                linkedList.add(tree.leftNode);
+                if (tree.rightNode != null)
+                linkedList.add(tree.rightNode);
+                sum += tree.getValue();
             }
-
+            result.add(sum/count);
         }
-        scanner.close();
+        System.out.println(result);
     }
 }
