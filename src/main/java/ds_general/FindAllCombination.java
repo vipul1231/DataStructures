@@ -55,14 +55,37 @@ public class FindAllCombination {
         return combinationSum;
     }
 
+    public static void combine_1(int n, int k, List<Integer> list, List<List<Integer>> result, int val) {
+
+        if (list.size() == k) {
+            result.add(new ArrayList<>(list));
+            return;
+        }
+
+        for (int i=val;i<=n;i++) {
+            list.add(i);
+            System.out.println(list);
+            combine_1(n,k, list, result, i+1);
+            list.remove(list.size()-1);
+        }
+    }
+
+    public static List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> combine = new ArrayList<>();
+        combine_1(n, k, new ArrayList<>(), combine, 1);
+        return combine;
+    }
+
+
     public static void main(String[] args) {
         int[] array = {1,2,3,4};
 
         //System.out.println(findCombinations(array, 7));
 
         int[] array_1 = {2,3};
-        System.out.println(combinationSum(array_1, 5));
+        //System.out.println(combinationSum(array_1, 5));
 
 
+        System.out.println(combine(5,3));
     }
 }
