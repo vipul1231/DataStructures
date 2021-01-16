@@ -38,13 +38,13 @@ public class StringPermutation {
                     if (valueMap.containsKey(val)) {
                         //Do something
                         int length = end - start;
-                        if (length == s1.length()) {
+                        if (length == s1.length() && verifyMap(countMap, valueMap)) {
                             System.out.println("Start: "+start + ", end: "+end);
                             return true;
                         } else {
                             Integer count = valueMap.get(val);
 
-                            if (countMap.get(val) < count) {
+                            if (countMap.get(val) < valueMap.get(val)) {
                                 valueMap.put(val, --count);
                             }
                             else if (countMap.get(val) >= count)
@@ -55,10 +55,10 @@ public class StringPermutation {
                                     valueMap.remove(val);
                                 }
                                 else {
-                                    valueMap.put(val, --count);
+                                    valueMap.put(val, count);
                                 }
 
-                                break;
+                                //break;
                             }
                         }
                     }
@@ -116,8 +116,9 @@ public class StringPermutation {
 
         System.out.println(checkInclusion(s9, s10));
 
-        //inox
-        //ipox
+       String s11 ="hello";
+       String s12 ="ooolleoooleh";
+        System.out.println(checkInclusion(s11, s12));
 
     }
 }
