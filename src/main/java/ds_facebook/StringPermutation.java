@@ -32,6 +32,7 @@ public class StringPermutation {
         Set<String> words = permute_1(sub);
 
         // access each element from words
+        System.out.println(words);
         for (String strNew : words) {
             for (int i = 0;i<=strNew.length();i++){
 

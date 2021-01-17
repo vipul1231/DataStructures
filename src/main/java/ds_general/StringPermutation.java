@@ -1,8 +1,6 @@
 package ds_general;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -10,16 +8,21 @@ public class StringPermutation {
 
     private static boolean verifyMap (Map<String, Long> countMap , Map<String, Integer> valueMap) {
 
-        for (String val : valueMap.keySet()) {
-            Integer c1 = valueMap.get(val);
-            Long c2 =  countMap.get(val);
+        for (String co : countMap.keySet()) {
+            Long count  = countMap.get(co);
+            Integer count2 = valueMap.get(co);
 
-            if (c1 < c2){
+            if (count2 == null) {
+                return false;
+            }
+
+            if (count2 < count) {
                 return false;
             }
         }
         return true;
     }
+
 
     public static boolean checkInclusion(String s1, String s2) {
 
@@ -27,41 +30,51 @@ public class StringPermutation {
         String[] arr = s2.split("");
         Map<String, Integer> valueMap = new HashMap<>();
         int start = -1, end = 0;
-
+        boolean isFound  = false;
+        List<Integer> index = new ArrayList<>();
         while (start != end) {
 
             //start compacting window size.
-            if (countMap.size() == valueMap.size() && verifyMap(countMap, valueMap)) {
+            if (verifyMap(countMap, valueMap)) {
                 start = start +1;
-                while (start != end) {
-                    String val = arr[start];
-                    if (valueMap.containsKey(val)) {
-                        //Do something
-                        int length = end - start;
-                        if (length == s1.length() && verifyMap(countMap, valueMap)) {
-                            System.out.println("Start: "+start + ", end: "+end);
-                            return true;
-                        } else {
-                            Integer count = valueMap.get(val);
 
-                            if (countMap.get(val) < valueMap.get(val)) {
-                                valueMap.put(val, --count);
+                while (true) {
+                    if (countMap.size() == valueMap.size()) {
+                        boolean verify = false;
+                        for (String c1 : countMap.keySet()) {
+                            Integer v1 = valueMap.get(c1);
+                            int v2 = Math.toIntExact(countMap.get(c1));
+
+                            if (v1 == null) {
+                                verify = false;
+                                break;
                             }
-                            else if (countMap.get(val) >= count)
-                            {
-                                count = count -1;
-
-                                if (count == 0) {
-                                    valueMap.remove(val);
-                                }
-                                else {
-                                    valueMap.put(val, count);
-                                }
-
-                                //break;
+                            if (v1 != v2) {
+                                verify = false;
+                                break;
+                            }
+                            else {
+                                verify = true;
                             }
                         }
+                        if (verify) {
+                            //index.add(start);
+                            return true;
+                        }
                     }
+
+                    Integer val = valueMap.get(arr[start]);
+                    val = val - 1;
+                    if (val == 0) {
+                        valueMap.remove(arr[start]);
+                    } else {
+                        valueMap.put(arr[start], val);
+                    }
+
+                    if (!verifyMap(countMap, valueMap)) {
+                        break;
+                    }
+
                     start++;
                 }
             }
@@ -71,18 +84,15 @@ public class StringPermutation {
                 break;
             }
             String val = arr[end];
-            if (countMap.containsKey(val)) {
-                Integer c = valueMap.get(val);
-                if (valueMap.containsKey(val)) {
-                    valueMap.put(val, ++c);
-                }
-                else {
-                    valueMap.put(val, 1);
-                }
+            Integer c = valueMap.get(val);
+            if (valueMap.containsKey(val)) {
+                valueMap.put(val, ++c);
+            } else {
+                valueMap.put(val, 1);
             }
-
             end++;
         }
+        System.out.println(index);
         return false;
     }
 
@@ -99,8 +109,8 @@ public class StringPermutation {
 
         System.out.println(checkInclusion(s1, s2));
 
-        String s3 = "ab";
-        String s4 = "eidboaoo";
+        String s3 = "adc";
+        String s4 = "dcda";
         System.out.println(checkInclusion(s3, s4));
 
         String s5 = "abc";
@@ -119,6 +129,15 @@ public class StringPermutation {
        String s11 ="hello";
        String s12 ="ooolleoooleh";
         System.out.println(checkInclusion(s11, s12));
+
+       String s13 = "a";
+       String s14 = "ab";
+        System.out.println(checkInclusion(s13, s14));
+
+
+        String s15 = "abc";
+        String s16 = "cbaebabacd";
+        System.out.println(checkInclusion(s15, s16));
 
     }
 }
