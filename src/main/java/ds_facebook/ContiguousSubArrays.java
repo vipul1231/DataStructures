@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ContiguousSubArrays {
 
-    static int[] countSubArray(int[] arr) {
+    static int[] countSubArray (int[] arr) {
         List<Integer> count = new ArrayList<>();
         int[] array = new int[arr.length];
         Integer match = 0;

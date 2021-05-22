@@ -91,11 +91,15 @@ public class HeapSort {
         int[] arr_3 = {2, 4, 7, 1, 5, 3};
         int[] arr_2 = {5, 15, 1, 3};
         heap(arr_1);
-        int[] ans = findMedian(arr_1);
+
+        for(int i=0;i< arr_1.length;i++) {
+            System.out.print(arr_1[i] + " ");
+        }
+       /* int[] ans = findMedian(arr_1);
         int[] ans_1 = findMedian(arr_2);
         int[] ans_2 = findMedian(arr_3);
         System.out.println(Arrays.stream(ans).boxed().collect(Collectors.toList()));
         System.out.println(Arrays.stream(ans_1).boxed().collect(Collectors.toList()));
-        System.out.println(Arrays.stream(ans_2).boxed().collect(Collectors.toList()));
+        System.out.println(Arrays.stream(ans_2).boxed().collect(Collectors.toList()));*/
     }
 }
