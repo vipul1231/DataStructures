@@ -1,5 +1,8 @@
 package ratelimiter;
 
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class Palindrom {
 
     public static boolean isPalindrom(String value) {
@@ -30,5 +33,26 @@ public class Palindrom {
 
         String arr_3 = "aabbbcbbdaa";
         System.out.println(isPalindrom(arr_3));
+
+        CopyOnWriteArrayList cpy = new CopyOnWriteArrayList();
+
+        cpy.add(1);
+
+        cpy.add(2);
+
+        Iterator iter = cpy.iterator();
+
+        while (iter.hasNext()) {
+
+            Object i1 = iter.next();
+            System.out.println(i1);
+            if(i1.equals(1)) {
+                cpy.add(4);
+            }
+        }
+
+        System.out.println(cpy);
     }
+
+
 }

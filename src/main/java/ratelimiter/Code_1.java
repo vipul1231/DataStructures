@@ -1,5 +1,7 @@
 package ratelimiter;
 
+import practise.TwoWayMergeSort;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,6 +13,27 @@ import java.util.stream.Collectors;
  * Virat Khozhi, 4, mumbai, batsman
  */
 
+
+class A {
+    public static void run() {
+        System.out.println("A");
+    }
+}
+
+class Code_1 extends A {
+
+    public static void run() {
+        System.out.println("B");
+    }
+
+    public static void main(String[] str) {
+        A a = new Code_1();
+        a.run();
+    }
+}
+
+
+/*
 class Player {
     String name;
     Integer id;
@@ -76,9 +99,13 @@ public class Code_1 {
         playersList.sort(returnComp());
         System.out.println(playersList);
 
+        TwoWayMergeSort sort = new TwoWayMergeSort();
+
+
     }
 
     public static Comparator<Player> returnComp() {
         return Comparator.comparing(o -> o.id);
     }
 }
+*/

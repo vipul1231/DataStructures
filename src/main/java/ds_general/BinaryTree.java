@@ -5,7 +5,6 @@ import java.util.Stack;
 
 public class BinaryTree {
 
-
     static class Node {
 
         final long key;

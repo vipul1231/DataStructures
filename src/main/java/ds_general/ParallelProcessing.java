@@ -132,5 +132,16 @@ public class ParallelProcessing {
             input[maxIndex] = temp;
             heapify(input, maxIndex, length);
         }
+
+        /*public Demo extends Thread{
+            private SomeClass runnable;
+            public void setSomeClass(SomeClass runnable){ this. runnable = runnable;}
+
+            public void run() {
+                log.info("Starting execution");
+                runnable.run();
+                log.info("Ending execution");
+            }
+        }*/
     }
 }
