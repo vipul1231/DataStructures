@@ -16,13 +16,16 @@ pipeline {
         stage('Build') {
             steps {
                    withMaven {
-                    sh ' mvn -f pom.xml clean install'
+                    sh ' mvn -f pom.xml clean compile'
                    }
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                withMaven {
+                    sh ' mvn -f pom.xml clean test'
+                   }
             }
         }
         stage('Deploy') {
