@@ -18,39 +18,37 @@ import java.util.concurrent.atomic.AtomicInteger;
 @State(Scope.Benchmark)
 public class CompareCollections {
 
-    /*@Benchmark
-    //@BenchmarkMode(Mode.AverageTime)
-    @Fork(value = 1, warmups = 0)
-    public long testHashMapUnimiPerf() {
-        Int2IntMap i2iMap = new Int2IntRBTreeMap();
-        for (int i=0;i<size;i++) {
-            i2iMap.put(i, i);
-        }
-
-        long sum = 0;
-        for (int i = size-1;i>=0;i--) {
-            sum += i2iMap.get(i);
-        }
-
-        return sum;
-    }
-
-    @Benchmark
-    //@BenchmarkMode(Mode.AverageTime)
-    @Fork(value = 1, warmups = 0)
-    public long testHashMapPerf() {
-        Map<Integer, Integer> i2iMap = new HashMap<>();
-        for (int i=0;i<size;i++) {
-            i2iMap.put(i, i);
-        }
-
-        long sum = 0;
-        for (int i = size-1;i>=0;i--) {
-            sum += i2iMap.get(i);
-        }
-
-        return sum;
-    }*/
+//    @Benchmark
+//    @Fork(value = 1, warmups = 0)
+//    public long testHashMapUnimiPerf() {
+//        Int2IntMap i2iMap = new Int2IntRBTreeMap();
+//        for (int i=0;i<100000;i++) {
+//            i2iMap.put(i, i);
+//        }
+//
+//        long sum = 0;
+//        for (int i = 100000-1;i>=0;i--) {
+//            sum += i2iMap.get(i);
+//        }
+//
+//        return sum;
+//    }
+//
+//    @Benchmark
+//    @Fork(value = 1, warmups = 0)
+//    public long testHashMapPerf() {
+//        Map<Integer, Integer> i2iMap = new HashMap<>();
+//        for (int i=0;i<100000;i++) {
+//            i2iMap.put(i, i);
+//        }
+//
+//        long sum = 0;
+//        for (int i = 100000-1;i>=0;i--) {
+//            sum += i2iMap.get(i);
+//        }
+//
+//        return sum;
+//    }
 
     /*@Benchmark
     //@BenchmarkMode(Mode.AverageTime)
@@ -122,7 +120,7 @@ public class CompareCollections {
 
     */
 
-    FastList<Double> list = new FastList<>();
+    /*FastList<Double> list = new FastList<>();
 
     @Setup(Level.Invocation)
     public void setup() {
@@ -175,7 +173,7 @@ public class CompareCollections {
             sum += aDouble;
         }
         return sum;
-    }
+    }*/
 
     public static void main(String[] args) throws Exception {
         org.openjdk.jmh.Main.main(args);

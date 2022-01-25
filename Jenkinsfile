@@ -3,7 +3,6 @@ pipeline {
 
     environment {
             M2_HOME = '/usr/share/maven/bin'
-            MAVEN_HOME = '/usr/share/maven/bin'
     }
 
     stages {
@@ -26,11 +25,6 @@ pipeline {
                 withMaven {
                     sh ' mvn -f pom.xml clean test'
                    }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
             }
         }
     }
