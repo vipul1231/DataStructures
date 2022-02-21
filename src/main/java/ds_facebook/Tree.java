@@ -8,7 +8,7 @@ class Tree {
     public Tree rightNode;
 
     public int getValue() {
-        return value;
+         return value;
     }
 
     Tree(int value) {

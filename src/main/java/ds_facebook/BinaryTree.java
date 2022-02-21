@@ -1,12 +1,15 @@
+/*
 package ds_facebook;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+*/
 /**
- *  Average at each level.
- */
+ * Average at each level.
+ *//*
+
 public class BinaryTree {
 
     public static void main(String[] args) {
@@ -40,3 +43,4 @@ public class BinaryTree {
         System.out.println(result);
     }
 }
+*/
